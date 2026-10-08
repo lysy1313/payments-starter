@@ -1,24 +1,36 @@
-import express, { type ErrorRequestHandler } from 'express';
-import { healthRouter } from './routes/health.js';
+import express, { type ErrorRequestHandler } from "express";
+import { healthRouter } from "./routes/health.js";
+import { productsRouter } from "./routes/products.js";
+import { ordersRouter } from "./routes/orders.js";
 
 const app = express();
-app.disable('x-powered-by');
-app.use(express.json({ limit: '16kb' }));
-app.use('/api', healthRouter);
+app.disable("x-powered-by");
+app.use(express.json({ limit: "16kb" }));
+app.use("/api", healthRouter);
+app.use("/api", productsRouter);
+app.use("/api", ordersRouter);
 
 // Здесь позже подключим роутеры заказов и платежей — в ходе обучения.
-app.use((_req, res) => res.status(404).json({ error: 'Маршрут не найден.' }));
+app.use((_req, res) => res.status(404).json({ error: "Маршрут не найден." }));
 const handleError: ErrorRequestHandler = (error: unknown, _req, res, _next) => {
-  if (error instanceof SyntaxError && 'body' in error) {
-    res.status(400).json({ error: 'Некорректный JSON.' });
+  if (error instanceof SyntaxError && "body" in error) {
+    res.status(400).json({ error: "Некорректный JSON." });
     return;
   }
-  if (typeof error === 'object' && error !== null && 'type' in error && error.type === 'entity.too.large') {
-    res.status(413).json({ error: 'Слишком большой запрос.' });
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "type" in error &&
+    error.type === "entity.too.large"
+  ) {
+    res.status(413).json({ error: "Слишком большой запрос." });
     return;
   }
-  console.error('Ошибка сервера:', error instanceof Error ? error.name : 'UnknownError');
-  res.status(500).json({ error: 'Внутренняя ошибка сервера.' });
+  console.error(
+    "Ошибка сервера:",
+    error instanceof Error ? error.name : "UnknownError",
+  );
+  res.status(500).json({ error: "Внутренняя ошибка сервера." });
 };
 app.use(handleError);
 
