@@ -1,0 +1,46 @@
+.checkout-message {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.checkout-message-error {
+  color: var(--danger);
+}
+
+.checkout-message .button {
+  margin-top: 12px;
+}
+
+.checkout-notice {
+  margin-bottom: 28px;
+  display: grid;
+  gap: 20px;
+}
+
+.checkout-notice p {
+  margin-top: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.checkout-notice .checkout-order-id {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.checkout-notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.plan-price.plan-price-placeholder {
+  font-size: 24px;
+}
+
+.plan-option:has(input:disabled),
+.method-option:has(input:disabled) {
+  cursor: wait;
+}

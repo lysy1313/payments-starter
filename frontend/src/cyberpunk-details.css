@@ -1,24 +1,49 @@
 /* Detail layer for the existing dark theme. No payment state changes. */
-.app-shell::before { content: none; }
+.app-shell::before {
+  content: none;
+}
 
 /* The raised center of the bottom edge follows the approved header contour. */
 .header-inner {
   --frame: #526659;
-  --outline-shape: polygon(24px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 73% 100%, calc(73% - 10px) calc(100% - 10px), 25% calc(100% - 10px), calc(25% - 10px) 100%, 16px 100%, 0 calc(100% - 16px), 0 24px);
+  --outline-shape: polygon(
+    24px 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    73% 100%,
+    calc(73% - 10px) calc(100% - 10px),
+    25% calc(100% - 10px),
+    calc(25% - 10px) 100%,
+    16px 100%,
+    0 calc(100% - 16px),
+    0 24px
+  );
 }
 
 .demo-label {
   background:
     linear-gradient(var(--border), var(--border)) left top / 8px 1px no-repeat,
     linear-gradient(var(--border), var(--border)) left top / 1px 8px no-repeat,
-    linear-gradient(var(--border), var(--border)) left bottom / 8px 1px no-repeat,
-    linear-gradient(var(--border), var(--border)) left bottom / 1px 8px no-repeat,
+    linear-gradient(var(--border), var(--border)) left bottom / 8px 1px
+      no-repeat,
+    linear-gradient(var(--border), var(--border)) left bottom / 1px 8px
+      no-repeat,
     linear-gradient(var(--border), var(--border)) right top / 8px 1px no-repeat,
     linear-gradient(var(--border), var(--border)) right top / 1px 8px no-repeat,
-    linear-gradient(var(--border), var(--border)) right bottom / 8px 1px no-repeat,
-    linear-gradient(var(--border), var(--border)) right bottom / 1px 8px no-repeat;
+    linear-gradient(var(--border), var(--border)) right bottom / 8px 1px
+      no-repeat,
+    linear-gradient(var(--border), var(--border)) right bottom / 1px 8px
+      no-repeat;
 }
-h1::before, h1::after { top: -8px; bottom: -8px; height: auto; width: 16px; border: 0; }
+h1::before,
+h1::after {
+  top: -8px;
+  bottom: -8px;
+  height: auto;
+  width: 16px;
+  border: 0;
+}
 h1::before {
   background:
     linear-gradient(var(--muted), var(--muted)) left top / 100% 1px no-repeat,
@@ -30,50 +55,137 @@ h1::after {
   background:
     linear-gradient(var(--muted), var(--muted)) right top / 100% 1px no-repeat,
     linear-gradient(var(--muted), var(--muted)) right top / 1px 16px no-repeat,
-    linear-gradient(var(--muted), var(--muted)) right bottom / 100% 1px no-repeat,
-    linear-gradient(var(--muted), var(--muted)) right bottom / 1px 16px no-repeat;
+    linear-gradient(var(--muted), var(--muted)) right bottom / 100% 1px
+      no-repeat,
+    linear-gradient(var(--muted), var(--muted)) right bottom / 1px 16px
+      no-repeat;
 }
 
 /* Panels have distinct silhouettes instead of one repeated octagon. */
 .purchase-options > .panel:first-child {
-  --outline-shape: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+  --outline-shape: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
 }
 .payment-panel {
-  --outline-shape: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  --outline-shape: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
 }
 .order-summary {
-  --outline-shape: polygon(22px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 26px 100%, 0 calc(100% - 26px), 0 22px);
+  --outline-shape: polygon(
+    22px 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    26px 100%,
+    0 calc(100% - 26px),
+    0 22px
+  );
 }
 .plan-option:first-child {
-  --outline-shape: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+  --outline-shape: polygon(
+    18px 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0 calc(100% - 18px),
+    0 18px
+  );
 }
 .plan-option:nth-child(2) {
-  --outline-shape: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  --outline-shape: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    0 100%
+  );
 }
 .method-option:first-child {
-  --outline-shape: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+  --outline-shape: polygon(
+    16px 0,
+    100% 0,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px),
+    0 16px
+  );
 }
 .method-option:nth-child(2) {
-  --outline-shape: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  --outline-shape: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%
+  );
 }
 .history-panel {
-  --outline-shape: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  --outline-shape: polygon(
+    0 0,
+    calc(100% - 28px) 0,
+    100% 28px,
+    100% 100%,
+    24px 100%,
+    0 calc(100% - 24px)
+  );
 }
 .subscription-plan {
-  --outline-shape: polygon(20px 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+  --outline-shape: polygon(
+    20px 0,
+    100% 0,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px),
+    0 20px
+  );
 }
 .subscription-method {
-  --outline-shape: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+  --outline-shape: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 24px),
+    calc(100% - 24px) 100%,
+    0 100%
+  );
 }
 .button.secondary {
-  --outline-shape: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  --outline-shape: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    0 100%
+  );
 }
 
 /* An open circuit line and brackets replace the old filled footer panel. */
-.footer-inner { min-height: 94px; padding: 32px 10px 20px; line-height: 1.5; background: transparent; }
-.footer-inner::before { display: none; }
+.footer-inner {
+  min-height: 94px;
+  padding: 32px 10px 20px;
+  line-height: 1.5;
+  background: transparent;
+}
+.footer-inner::before {
+  display: none;
+}
 .footer-inner::after {
-  display: block; inset: 18px -20px 14px; z-index: 0; clip-path: none;
+  display: block;
+  inset: 18px -20px 14px;
+  z-index: 0;
+  clip-path: none;
   background:
     linear-gradient(var(--muted), var(--muted)) left top / 8px 1px no-repeat,
     linear-gradient(var(--muted), var(--muted)) left top / 1px 8px no-repeat,
@@ -83,73 +195,277 @@ h1::after {
     linear-gradient(var(--muted), var(--muted)) right top / 1px 8px no-repeat,
     linear-gradient(var(--muted), var(--muted)) right bottom / 8px 1px no-repeat,
     linear-gradient(var(--muted), var(--muted)) right bottom / 1px 8px no-repeat;
-  opacity: .6;
+  opacity: 0.6;
 }
-.footer-contour { position: absolute; inset: 0 0 auto; width: 100%; height: 60px; pointer-events: none; fill: none; stroke: var(--muted); stroke-width: 1; opacity: .6; }
-.footer-contour rect { fill: var(--background); }
+.footer-contour {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+.footer-contour rect {
+  fill: var(--background);
+}
 
 /* Decorative geometry is hidden from accessibility tools and cannot catch clicks. */
-.ambient-details { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; color: #81978b; }
-.ambient-circuit { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1; opacity: .24; }
-.edge-rail { position: absolute; inset-block: 0; width: 52px; }
-.edge-rail-left { left: 0; }
-.edge-rail-right { right: 0; }
-.edge-route { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1; opacity: .4; }
-.edge-cross, .ambient-cross {
-  position: absolute; width: 18px; height: 18px; opacity: .6;
-  background: linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat, linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+.ambient-details {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  color: #81978b;
 }
-.edge-cross { left: 17px; }
-.edge-cross-top { top: 14px; }
-.edge-cross-bottom { bottom: 20px; }
-.edge-rail-right .edge-cross-top { top: 156px; }
-.edge-cross-middle { top: 64%; }
-.edge-node, .ambient-node { position: absolute; width: 8px; height: 8px; border: 1px solid currentColor; opacity: .7; }
-.edge-node { left: 23px; }
-.edge-rail-left .edge-node-first { top: 73%; }
-.edge-rail-left .edge-node-second { top: 83%; }
-.edge-rail-right .edge-node-first { top: 34%; width: 10px; height: 10px; left: 22px; }
-.edge-rail-right .edge-node-second { bottom: 7%; }
-.edge-ticks { position: absolute; width: 3px; height: 114px; left: 25px; background: repeating-linear-gradient(to bottom, currentColor 0 3px, transparent 3px 22px); opacity: .65; }
-.edge-rail-left .edge-ticks { top: 76%; }
-.edge-rail-right .edge-ticks { top: 188px; height: 132px; }
-.edge-rail-right .edge-ticks-bottom { top: auto; bottom: 10%; height: 96px; }
-.ambient-cross-heading { left: 34%; top: 151px; opacity: .35; }
-.ambient-cross-aside { left: 67%; top: 175px; opacity: .35; }
-.ambient-node-heading { left: 71%; top: 212px; }
-.ambient-dots { position: absolute; left: 66.5%; top: 277px; width: 66px; height: 2px; background: repeating-linear-gradient(to right, currentColor 0 2px, transparent 2px 20px); opacity: .5; }
+.ambient-circuit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.24;
+}
+.edge-rail {
+  position: absolute;
+  inset-block: 0;
+  width: 52px;
+}
+.edge-rail-left {
+  left: 0;
+}
+.edge-rail-right {
+  right: 0;
+}
+.edge-route {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.4;
+}
+.edge-cross,
+.ambient-cross {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+  background:
+    linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat,
+    linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+.edge-cross {
+  left: 17px;
+}
+.edge-cross-top {
+  top: 14px;
+}
+.edge-cross-bottom {
+  bottom: 20px;
+}
+.edge-rail-right .edge-cross-top {
+  top: 156px;
+}
+.edge-cross-middle {
+  top: 64%;
+}
+.edge-node,
+.ambient-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  opacity: 0.7;
+}
+.edge-node {
+  left: 23px;
+}
+.edge-rail-left .edge-node-first {
+  top: 73%;
+}
+.edge-rail-left .edge-node-second {
+  top: 83%;
+}
+.edge-rail-right .edge-node-first {
+  top: 34%;
+  width: 10px;
+  height: 10px;
+  left: 22px;
+}
+.edge-rail-right .edge-node-second {
+  bottom: 7%;
+}
+.edge-ticks {
+  position: absolute;
+  width: 3px;
+  height: 114px;
+  left: 25px;
+  background: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 3px,
+    transparent 3px 22px
+  );
+  opacity: 0.65;
+}
+.edge-rail-left .edge-ticks {
+  top: 76%;
+}
+.edge-rail-right .edge-ticks {
+  top: 188px;
+  height: 132px;
+}
+.edge-rail-right .edge-ticks-bottom {
+  top: auto;
+  bottom: 10%;
+  height: 96px;
+}
+.ambient-cross-heading {
+  left: 34%;
+  top: 151px;
+  opacity: 0.35;
+}
+.ambient-cross-aside {
+  left: 67%;
+  top: 175px;
+  opacity: 0.35;
+}
+.ambient-node-heading {
+  left: 71%;
+  top: 212px;
+}
+.ambient-dots {
+  position: absolute;
+  left: 66.5%;
+  top: 277px;
+  width: 66px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    currentColor 0 2px,
+    transparent 2px 20px
+  );
+  opacity: 0.5;
+}
 
 @media (min-width: 1400px) {
-  .method-option > svg { width: 46px; height: 46px; }
+  .method-option > svg {
+    width: 46px;
+    height: 46px;
+  }
 }
 @media (max-width: 1199px) {
-  .edge-rail { width: 32px; }
-  .edge-rail-left { left: -10px; }
-  .edge-rail-right { right: -10px; }
-  .edge-cross { left: 7px; }
-  .edge-node, .edge-rail-right .edge-node-first { left: 12px; }
-  .edge-ticks { left: 15px; }
-  .ambient-cross-heading { top: 134px; }
-  .ambient-cross-aside { top: 146px; }
+  .edge-rail {
+    width: 32px;
+  }
+  .edge-rail-left {
+    left: -10px;
+  }
+  .edge-rail-right {
+    right: -10px;
+  }
+  .edge-cross {
+    left: 7px;
+  }
+  .edge-node,
+  .edge-rail-right .edge-node-first {
+    left: 12px;
+  }
+  .edge-ticks {
+    left: 15px;
+  }
+  .ambient-cross-heading {
+    top: 134px;
+  }
+  .ambient-cross-aside {
+    top: 146px;
+  }
 }
 @media (max-width: 900px) {
   .header-inner {
-    --outline-shape: polygon(18px 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 76% 100%, calc(76% - 8px) calc(100% - 6px), 27% calc(100% - 6px), calc(27% - 8px) 100%, 12px 100%, 0 calc(100% - 12px), 0 18px);
+    --outline-shape: polygon(
+      18px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      76% 100%,
+      calc(76% - 8px) calc(100% - 6px),
+      27% calc(100% - 6px),
+      calc(27% - 8px) 100%,
+      12px 100%,
+      0 calc(100% - 12px),
+      0 18px
+    );
   }
-  .ambient-cross-heading, .ambient-cross-aside, .ambient-node-heading, .ambient-dots { display: none; }
+  .ambient-cross-heading,
+  .ambient-cross-aside,
+  .ambient-node-heading,
+  .ambient-dots {
+    display: none;
+  }
 }
 @media (max-width: 640px) {
-  h1::before, h1::after { width: 9px; top: -6px; bottom: -6px; }
-  .ambient-circuit, .edge-route, .edge-ticks-bottom, .edge-rail-left .edge-node-second { display: none; }
-  .edge-cross { width: 12px; height: 12px; left: 23px; }
-  .edge-rail-right .edge-cross { left: 10px; }
-  .edge-node, .edge-rail-right .edge-node-first { width: 6px; height: 6px; }
-  .edge-rail-right .edge-node { left: 12px; }
-  .edge-rail-left .edge-node { left: 26px; }
-  .edge-ticks { height: 66px; left: 28px; opacity: .4; }
-  .edge-rail-right .edge-ticks { left: 14px; height: 66px; }
-  .footer-inner { min-height: 98px; padding: 25px 12px 18px; }
-  .footer-contour { display: none; }
-  .footer-inner::before { display: block; inset: 0 12px auto; height: 1px; z-index: 0; clip-path: none; background: var(--border); }
-  .footer-inner::after { inset: 14px 0 12px; }
+  h1::before,
+  h1::after {
+    width: 9px;
+    top: -6px;
+    bottom: -6px;
+  }
+  .ambient-circuit,
+  .edge-route,
+  .edge-ticks-bottom,
+  .edge-rail-left .edge-node-second {
+    display: none;
+  }
+  .edge-cross {
+    width: 12px;
+    height: 12px;
+    left: 23px;
+  }
+  .edge-rail-right .edge-cross {
+    left: 10px;
+  }
+  .edge-node,
+  .edge-rail-right .edge-node-first {
+    width: 6px;
+    height: 6px;
+  }
+  .edge-rail-right .edge-node {
+    left: 12px;
+  }
+  .edge-rail-left .edge-node {
+    left: 26px;
+  }
+  .edge-ticks {
+    height: 66px;
+    left: 28px;
+    opacity: 0.4;
+  }
+  .edge-rail-right .edge-ticks {
+    left: 14px;
+    height: 66px;
+  }
+  .footer-inner {
+    min-height: 98px;
+    padding: 25px 12px 18px;
+  }
+  .footer-contour {
+    display: none;
+  }
+  .footer-inner::before {
+    display: block;
+    inset: 0 12px auto;
+    height: 1px;
+    z-index: 0;
+    clip-path: none;
+    background: var(--border);
+  }
+  .footer-inner::after {
+    inset: 14px 0 12px;
+  }
 }

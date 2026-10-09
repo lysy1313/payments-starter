@@ -45,8 +45,8 @@ export function PaymentPreview({
       {state === "choose" ? (
         <>
           <p className="muted dialog-copy">
-            Платёжная система ещё не подключена. Выберите состояние, чтобы
-            посмотреть готовый экран.
+            Для выбранного варианта доступен только предпросмотр. Выберите
+            состояние, чтобы посмотреть готовый экран.
           </p>
           <div className="preview-summary">
             <span>{methodLabel(method)}</span>

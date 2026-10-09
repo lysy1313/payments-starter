@@ -1,6 +1,13 @@
 import { Router } from "express";
 import { randomUUID } from "node:crypto";
 import { sql } from "../db/client.js";
+import { stripe } from "../stripe/client.js";
+
+const frontendUrl = process.env.FRONTEND_URL;
+
+if (!frontendUrl) {
+  throw new Error("Не задана переменная FRONTEND_URL");
+}
 
 export const ordersRouter = Router();
 
@@ -135,4 +142,110 @@ ordersRouter.get("/orders/:id/payment-attempts", async (req, res) => {
   `;
 
   res.json({ attempts });
+});
+
+ordersRouter.post("/payment-attempts/:id/checkout", async (req, res) => {
+  const attemptId = req.params.id;
+
+  const rows = await sql`
+    SELECT
+      a.id AS attempt_id,
+      a.order_id,
+      a.status AS attempt_status,
+      a.idempotency_key,
+      a.provider_session_id,
+      o.status AS order_status,
+      o.quantity,
+      o.unit_amount,
+      o.currency
+    FROM payment_attempts AS a
+    JOIN orders AS o ON o.id = a.order_id
+    WHERE a.id = ${attemptId};
+  `;
+
+  const data = rows[0];
+
+  if (!data) {
+    res.status(404).json({ error: "Попытка оплаты не найдена" });
+    return;
+  }
+
+  if (data.order_status !== "pending") {
+    res.status(409).json({ error: "Заказ недоступен для оплаты" });
+    return;
+  }
+
+  if (data.provider_session_id) {
+    const existingSession = await stripe.checkout.sessions.retrieve(
+      data.provider_session_id,
+    );
+
+    if (existingSession.status !== "open" || !existingSession.url) {
+      res.status(409).json({
+        error: "Эта платёжная сессия больше недоступна для оплаты",
+      });
+      return;
+    }
+
+    res.json({
+      attemptId: data.attempt_id,
+      checkoutUrl: existingSession.url,
+    });
+    return;
+  }
+
+  if (data.attempt_status !== "created") {
+    res.status(409).json({ error: "Попытка недоступна для запуска оплаты" });
+    return;
+  }
+
+  const encodedOrderId = encodeURIComponent(data.order_id);
+
+  const session = await stripe.checkout.sessions.create(
+    {
+      mode: "payment",
+      line_items: [
+        {
+          price_data: {
+            currency: data.currency.toLowerCase(),
+            unit_amount: data.unit_amount,
+            product_data: {
+              name: "Разовая покупка",
+            },
+          },
+          quantity: data.quantity,
+        },
+      ],
+      client_reference_id: data.order_id,
+      metadata: {
+        orderId: data.order_id,
+        attemptId: data.attempt_id,
+      },
+      success_url:
+        `${frontendUrl}/?checkout=success&orderId=${encodedOrderId}` +
+        "&session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: `${frontendUrl}/?checkout=cancelled&orderId=${encodedOrderId}`,
+    },
+    {
+      idempotencyKey: data.idempotency_key,
+    },
+  );
+
+  if (!session.url) {
+    throw new Error("Stripe не вернул ссылку на страницу оплаты");
+  }
+
+  await sql`
+    UPDATE payment_attempts
+    SET
+      provider_session_id = ${session.id},
+      status = 'pending'
+    WHERE id = ${data.attempt_id}
+      AND status = 'created';
+  `;
+
+  res.status(201).json({
+    attemptId: data.attempt_id,
+    checkoutUrl: session.url,
+  });
 });
